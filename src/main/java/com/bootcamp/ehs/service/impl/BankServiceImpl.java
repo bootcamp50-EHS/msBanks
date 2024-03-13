@@ -6,6 +6,7 @@ import com.bootcamp.ehs.service.IBankService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -26,5 +27,10 @@ public class BankServiceImpl implements IBankService {
     @Override
     public Mono<Bank> getBankByCode(String codeBank) {
         return bankRepo.findByCodeBank(codeBank);
+    }
+
+    @Override
+    public Flux<Bank> getAllBanks() {
+        return bankRepo.findAll();
     }
 }
